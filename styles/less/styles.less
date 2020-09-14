@@ -1,0 +1,46 @@
+body {
+	min-height: 100vh;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+
+	ul, ol, p, h1, h2, h3, h4, h5, h6 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+
+    .movie-heading {
+        margin-bottom: 20px;
+        h1 {
+            font-size: 22px;
+        }
+    }
+
+    .movie-image {
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        img {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .btn {
+        margin-top: 20px;
+    }
+}
