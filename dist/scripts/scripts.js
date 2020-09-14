@@ -1,5 +1,5 @@
 const websiteApp = document.getElementById('root');
-let chunkedResponse;
+let chunkedResponse = [];
 let counter;
 
 // source: https://www.w3resource.com/javascript-exercises/fundamental/javascript-fundamental-exercise-265.php
@@ -20,17 +20,24 @@ fetch('https://itunes.apple.com/us/rss/topmovies/limit=100/json')
 function appendData() {
     chunkedResponse[counter].map(chunk => {
         const card =
-            `<div class="movie-card col-4" id="${chunk['im:name'].label}">
-                <div class="movie-heading">
-                    <h1>${chunk['im:name'].label}</h1>
-                </div>
+            `<div class="movie-card" id="${chunk['im:name'].label}">
                 <div class="movie-image">
                     <img src="${chunk['im:image'][2].label}" />
                 </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#${chunk['id'].attributes['im:id']}">See more</button>
+                <div class="movie-details">
+                    <h1>${chunk['im:name'].label}</h1>
+                    <div class="btn-wrapper">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#${chunk['id'].attributes['im:id']}">See more</button>
+                        <div
+                            class="heart-favorite"
+                            onClick="addHeart(${chunk['id'].attributes['im:id']})"
+                            id="${chunk['id'].attributes['im:id']}"
+                        >❤</div>
+                    </div>
+                </div>
             </div>
             <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="movieModal" aria-hidden="true" id="${chunk['id'].attributes['im:id']}">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">${chunk['im:name'].label}</h5>
@@ -39,21 +46,24 @@ function appendData() {
                             </button>
                         </div>
                         <div class="modal-body">
-                            ${chunk['summary'].label}
+                           <p> ${chunk['summary'].label}</p>
                         </div>
                     </div>
                 </div>
             </div> `;
-
         websiteApp.innerHTML += card;
-
-        console.log(chunkedResponse)
     })
 }
 
+function addHeart(id) {
+    $(`#${id}`).toggleClass('active');
+}
+
+
 $(window).scroll(function () {
-    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 300 && counter + 1 < chunkedResponse.length) {
-        counter++;
+    if (
+        $(window).scrollTop() >= $(document).height() - $(window).height() - 300 && counter + 1 < chunkedResponse.length) {
         appendData();
+        counter++;
     }
 });
