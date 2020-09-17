@@ -14,7 +14,6 @@ fetch('https://itunes.apple.com/us/rss/topmovies/limit=100/json')
         const entries = response.feed.entry;
         chunkedResponse = chunkArray(entries, 10);
         counter = 0;
-        console.log(entries)
         appendData();
     });
 

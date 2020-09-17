@@ -1,0 +1,114 @@
+.navbar {
+    background-color: #000;
+    position: relative;
+    z-index: 11;
+    padding: 0 2.5%;
+
+    .logo {
+        width: 35px;
+        margin-right: 20px;
+    }
+
+    .input-search {
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+
+            img {
+                width: 18px;
+                margin-left: 5px;
+            }
+        }
+
+        input {
+            background-color: transparent;
+            width: 250px;
+            border: none;
+            border-bottom: 0.5px solid rgba(#fff,0.5);
+            border-radius: 0;
+            transition: border 250ms ease;
+            color: #fff;
+            font-size: 14px;
+
+            &:focus {
+                outline: none;
+                border-bottom: 1px solid @color-elements;
+            }
+
+            &::placeholder {
+                color:  rgba(#fff,0.8);
+                font-size: 13px;
+            }
+        }
+    }
+
+    .navbar-links {
+        display: flex;
+        
+        .links {
+            display: flex;
+            list-style: none;
+    
+            li {
+    
+                &:not(:last-of-type) {
+                    margin-right: 20px;
+
+                }
+
+                &:last-of-type {
+                    a {
+                        padding: 25px 0;
+                    }
+                }
+    
+                a {
+                    color: #fff;
+                    font-size: 15px;
+                    transition: color 250ms ease;
+                    padding: 25px 20px 25px 0;
+                    display: block;
+    
+                    &:hover {
+                        text-decoration: none;
+                        color: @color-elements;
+                    }
+                }
+            }
+        }
+
+       .social-media {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .divider {
+                height: 25px;
+                margin: 0 30px;
+                width: 1px;
+                display: block;
+                background-color: rgba(#fff,0.7);
+            }
+
+            li {
+                padding: 25px 15px 25px 0;
+
+                &:last-of-type {
+                    a {
+                        padding: 18px 0;
+                    }
+                }
+
+                img {
+                    width: 18px;
+                }
+            }
+        }
+    }
+}

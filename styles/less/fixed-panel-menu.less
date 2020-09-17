@@ -1,0 +1,109 @@
+.panel-menu {
+    position: fixed;
+    z-index: 22;
+    left: -240px;
+    width: 300px;
+    top: 0;
+    height: 100vh;
+    background-color: #000; 
+    transition: all 350ms;
+    box-shadow: 0 2px 20px 0 rgba(16, 47, 102, 0.1);
+
+    .panel-icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 25px;
+  
+        .arrow {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            width: 20px;
+        }
+
+        .logo {
+            opacity: 0;
+            visibility: hidden;
+            width: 35px;
+            margin: -5px 0 0 30px;
+        }
+
+        span {
+            color: #fff;
+            font-size: 13px;
+            display: inline-block;
+            margin-left: 10px;
+        }
+    }
+
+    ul {
+        list-style: none;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: -230px;
+        transition: margin 350ms;
+
+        li {
+            transition: background 250ms ease;
+            width: 100%;
+            color: #fff;
+            border-left: 3px solid transparent;
+
+             &.user {
+                display: flex;
+                align-items: center;
+                padding: 15px 0 15px 30px;
+
+                span {
+                    font-size: 22px;
+                    font-weight: 600;
+                }
+                img {
+                    width: 40px;
+                    margin-left: 20px;
+                }
+             }
+
+            a {
+                color: #fff;
+                font-size: 15px;
+                width: 100%;
+                display: block;
+                padding: 15px 0 15px 30px;
+            }
+
+            &:hover:not(:first-of-type) {
+                background: linear-gradient(132deg, rgba(51,17,72,1) 87%, rgba(59,23,90,1) 100%, rgba(87,45,152,1) 100%);
+                border-left: 3px solid #fff;
+
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+   &.active {
+        left: 0;
+
+        .panel-icon {
+            .arrow {
+                transform: rotate(-180deg);
+            }
+            
+            .logo {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        ul {
+            margin-left: 0;
+        }
+    }
+}

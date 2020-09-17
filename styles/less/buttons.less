@@ -1,0 +1,27 @@
+.btn {
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 0;
+    transition: all 250ms ease;
+    color: #fff;
+
+    &.btn-color {
+        background: linear-gradient(132deg, rgba(51,17,72,1) 87%, rgba(59,23,90,1) 100%, rgba(87,45,152,1) 100%);
+        border: 1px solid transparent;
+
+        &:hover, &:focus {
+            box-shadow: none;
+            border: 1px solid rgba(#fff,0.6);
+        }
+    }
+
+    &.btn-border {
+        border: 1px solid rgba(#fff,0.6);
+
+        &:focus, &:hover {
+            box-shadow: rgb(123, 22, 255) 0px 0px 10px;
+        }
+    }
+}

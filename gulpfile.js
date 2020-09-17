@@ -18,7 +18,7 @@ gulp.task('serve', ['less', 'script'], function () {
 });
 
 gulp.task('less', function () {
-    gulp.src('styles/less/*.less')
+    gulp.src('styles/less/styles.less')
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(
