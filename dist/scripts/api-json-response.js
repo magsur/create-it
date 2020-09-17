@@ -9,14 +9,17 @@ const chunkArray = (arr, size) => {
 }
 
 fetch('https://itunes.apple.com/us/rss/topmovies/limit=100/json')
-    .then(blob => blob.json())
-    .then(response => {
-        const entries = response.feed.entry;
+    .then(apiData => { // return data from API in json format
+        return apiData.json();
+    })
+    .then(parsedApiData => { // get parsed API data as object with entry property
+        const entries = parsedApiData.feed.entry;
         chunkedResponse = chunkArray(entries, 10);
         counter = 0;
         appendData();
     });
 
+// create movie-cards dynamically with title, price, image, description and add them to HTML
 function appendData() {
     chunkedResponse[counter].map(chunk => {
         const card =
@@ -58,11 +61,12 @@ function appendData() {
     })
 }
 
+// toggle class for heart icon (favorite film)
 function addHeart(id) {
     $(`#${id}-heart`).toggleClass('active');
 }
 
-
+// upload chunked response from API on scroll to bottom
 $(window).scroll(function () {
     if (
         $(window).scrollTop() >= $(document).height() - $(window).height() - 300 && counter + 1 < chunkedResponse.length) {
